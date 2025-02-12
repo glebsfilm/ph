@@ -9,23 +9,38 @@
 
 <url>
   <loc>https://glebsfilm.com/</loc>
-  <lastmod>2024-05-09T02:17:08+00:00</lastmod>
+  <lastmod>2025-02-12T08:01:38+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://glebsfilm.com/index.html</loc>
-  <lastmod>2024-05-09T02:17:08+00:00</lastmod>
+  <lastmod>2025-02-12T08:01:38+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://glebsfilm.com/about.html</loc>
-  <lastmod>2024-05-09T02:17:08+00:00</lastmod>
+  <lastmod>2025-02-12T08:01:38+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://glebsfilm.com/portfolio_glebsfilm.html</loc>
-  <lastmod>2024-05-09T02:17:08+00:00</lastmod>
+  <loc>https://glebsfilm.com/collections/automotive.html</loc>
+  <lastmod>2025-02-12T08:01:39+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://glebsfilm.com/collections/landscapes.html</loc>
+  <lastmod>2025-02-12T08:01:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://glebsfilm.com/collections/cityscape.html</loc>
+  <lastmod>2025-02-12T08:01:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://glebsfilm.com/portfolio.html</loc>
+  <lastmod>2025-02-12T08:01:39+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
