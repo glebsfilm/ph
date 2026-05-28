@@ -107,7 +107,6 @@
       <div class="lightbox__caption">
         <span class="lightbox__index"></span>
         <span class="lightbox__meta"></span>
-        <span class="lightbox__count"></span>
       </div>
     `;
     document.body.appendChild(root);
@@ -115,7 +114,6 @@
     const img      = root.querySelector('.lightbox__img');
     const indexEl  = root.querySelector('.lightbox__index');
     const metaEl   = root.querySelector('.lightbox__meta');
-    const countEl  = root.querySelector('.lightbox__count');
     let current = -1;
 
     function open(i) {
@@ -159,7 +157,6 @@
       next.src = p.src;
       indexEl.textContent = p.index;
       metaEl.textContent  = p.meta;
-      countEl.textContent = `${current + 1} / ${photos.length}`;
       // Preload neighbours
       preload(current + 1);
       preload(current - 1);

@@ -16,7 +16,7 @@
   --ink-faint:    #8E867A;
   --hairline:     rgba(26, 24, 20, 0.12);
   --accent:       #8B2C1F;   /* deep darkroom red, used sparingly */
-  --backdrop:     rgba(245, 241, 234, 0.88);
+  --backdrop:     rgba(245, 241, 234, 0.96);
 
   /* Type */
   --font-display: 'Fraunces', 'Times New Roman', Georgia, serif;
@@ -31,11 +31,12 @@
 /* ---------- Reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;       /* belt-and-suspenders against any stray horizontal overflow */
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
@@ -107,6 +108,9 @@ body::before {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 22px var(--gutter);
+  /* Extend the bar's background up into the iOS notch/status-bar area
+     so it never shows a translucent strip at the very top. */
+  padding-top: max(22px, env(safe-area-inset-top));
   background: var(--backdrop);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -279,7 +283,7 @@ body::before {
   font-weight: 300;
   font-style: italic;
   font-variation-settings: "opsz" 144, "SOFT" 30;
-  font-size: clamp(52px, 9.5vw, 140px);
+  font-size: clamp(44px, 9.5vw, 140px);
   line-height: 0.94;
   letter-spacing: -0.035em;
   color: var(--paper);
@@ -891,7 +895,7 @@ body::before {
 .lightbox__caption {
   margin-top: 22px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   align-items: baseline;
   gap: 24px;
   color: rgba(245, 241, 234, 0.72);
@@ -901,8 +905,7 @@ body::before {
   text-transform: uppercase;
 }
 .lightbox__index { color: rgba(245, 241, 234, 0.55); }
-.lightbox__meta  { color: var(--paper); }
-.lightbox__count { color: rgba(245, 241, 234, 0.45); text-align: right; }
+.lightbox__meta  { color: var(--paper); text-align: right; }
 
 /* Button chrome */
 .lightbox button {
@@ -932,7 +935,7 @@ body::before {
     gap: 4px;
     font-size: 10px;
   }
-  .lightbox__count { text-align: left; }
+  .lightbox__meta { text-align: left; }
 }
 
 /* When the lightbox is open, lock body scroll */
