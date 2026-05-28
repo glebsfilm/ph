@@ -198,6 +198,7 @@ body::before {
   .site-nav__toggle { display: block; grid-column: 3; justify-self: end; }
   .site-nav__links {
     position: absolute;
+    grid-column: 1 / -1;   /* span the whole bar, not just the right column */
     top: 100%; left: 0; right: 0;
     flex-direction: column;
     gap: 0;
