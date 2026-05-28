@@ -1,0 +1,17 @@
+{
+  "_comment": "Camera + film stock per photo. Add an entry under 'photos' for any photo you want to caption. Defaults under '_defaults' apply to every photo in that collection unless overridden. Photos with no entry and no default get a 'Camera · Film stock' placeholder.",
+
+  "_defaults": {
+    "automotive": { "camera": "Camera", "film": "Film stock" },
+    "landscape":  { "camera": "Camera", "film": "Film stock" },
+    "cityscape":  { "camera": "Camera", "film": "Film stock" }
+  },
+
+  "photos": {
+    "_examples": "delete this and add your own entries below",
+    "_example_landscape_1":  { "camera": "Pentax K1000",    "film": "Kodak Portra 400" },
+    "_example_landscape_3":  { "camera": "Mamiya RB67",     "film": "Kodak Ektar 100" },
+    "_example_automotive_1": { "camera": "Canon AE-1",      "film": "Cinestill 800T" },
+    "_example_cityscape_7":  { "camera": "Yashica Mat-124", "film": "Ilford HP5+" }
+  }
+}
