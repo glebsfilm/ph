@@ -1,0 +1,58 @@
+name: Build site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'images/**'
+      - 'photo_meta.json'
+      - 'build_html.py'
+      - 'process_images.py'
+      - 'styles/**'
+      - 'js/**'
+      - 'assets/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: pip install --quiet Pillow
+
+      - name: Process new images
+        run: python3 process_images.py
+
+      - name: Regenerate HTML
+        run: python3 build_html.py
+
+      - name: Commit + push if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes — nothing to commit."
+          else
+            git commit -m "Auto-process images and rebuild HTML [skip ci]"
+            git push
+          fi
