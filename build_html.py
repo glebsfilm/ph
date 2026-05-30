@@ -1,13 +1,51 @@
+#!/usr/bin/env python3
+"""
+HTML generator for glebsfilm — editorial monograph build.
+
+Reads each photo's dimensions during build so <img> tags get correct
+width/height attributes (prevents Cumulative Layout Shift, fixes the
+"cream box around lazy images" bug).
+
+Per-photo camera/film metadata can be set via PHOTO_META below. Any
+photo not listed gets the collection's default. Edit and re-run.
+
+NOTE on Cloudflare Analytics:
+  Replace CF_BEACON_TOKEN with the token from your Cloudflare dashboard.
+"""
+
 from pathlib import Path
 from PIL import Image
 import json
+import hashlib
 
+# Root of the site = wherever this script lives. Works on GitHub
+# Actions runners, in Docker, on Windows — anywhere.
 DST = Path(__file__).resolve().parent
+
+# Cache-busting: an 8-char content hash appended to the CSS/JS URLs.
+# Changes automatically whenever the file's contents change, which
+# forces browsers and Cloudflare to fetch the fresh copy. When the
+# file is unchanged, the hash stays the same so caching still works.
+def asset_version(rel_path: str) -> str:
+    p = DST / rel_path
+    if not p.exists():
+        return "0"
+    return hashlib.md5(p.read_bytes()).hexdigest()[:8]
+
+CSS_VER = asset_version("styles/site.css")
+JS_VER  = asset_version("js/site.js")
 
 CF_BEACON_TOKEN = "REPLACE_WITH_YOUR_CF_BEACON_TOKEN"
 SITE_URL        = "https://www.glebsfilm.com"
 
+# ============================================================ #
+# Collection definitions                                       #
+# ============================================================ #
+
 COLLECTIONS = [
+    # (slug, title, prefix, folder, blurb, default_camera, default_film)
+    # Photo count is auto-detected from the images/ folder at build time —
+    # add new photos with `add_photo.py` and they show up automatically.
     ("automotive", "Automotive", "a", "automotive",
      "Engines, leather, light on chrome.",
      "Camera",  "Film stock"),
@@ -19,6 +57,14 @@ COLLECTIONS = [
      "Camera",  "Film stock"),
 ]
 
+# Per-photo overrides for camera/film metadata.
+# Key is "{slug}-{photo_index}", e.g. "landscapes-3".
+# Format: (camera, film_stock). Any photo not listed inherits the
+# collection default above.
+# Photo metadata — camera + film stock per photo — lives in
+# photo_meta.json so it can be edited via the GitHub web UI without
+# touching Python. Both per-collection defaults and per-photo
+# overrides are supported.
 def _load_meta():
     p = DST / "photo_meta.json"
     if not p.exists():
@@ -31,6 +77,12 @@ def _load_meta():
 
 _META = _load_meta()
 
+
+# ============================================================ #
+# Build helpers                                                #
+# ============================================================ #
+
+# Cache image dimensions so we only read each file once.
 _dim_cache = {}
 def img_dims(path: Path):
     if path in _dim_cache:
@@ -53,6 +105,7 @@ def count_photos(folder: str, prefix: str) -> int:
             nums.append(int(num_str))
         except ValueError:
             continue
+    # Return the highest sequential number (handles gaps if photos were deleted)
     return max(nums) if nums else 0
 
 
@@ -95,7 +148,7 @@ def head(*, title, description, canonical, depth=0, extra_head=""):
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>{title}</title>
   <meta name="description" content="{description}">
   <meta name="keywords" content="Photography, Film photography, 35mm film, 120mm film, analog art, vintage photography">
@@ -130,7 +183,7 @@ def head(*, title, description, canonical, depth=0, extra_head=""):
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=IBM+Plex+Mono:wght@300;400;500&display=swap">
 
-  <link rel="stylesheet" href="{root}styles/site.css">
+  <link rel="stylesheet" href="{root}styles/site.css?v={CSS_VER}">
   {extra_head}
 </head>"""
 
@@ -205,7 +258,12 @@ def picture_with_dims(stem_path, *, sizes_attr, jpg_full_path):
 
 def scripts(*, depth=0):
     root = "../" if depth else ""
-    return f'<script src="{root}js/site.js" defer></script>'
+    return f'<script src="{root}js/site.js?v={JS_VER}" defer></script>'
+
+
+# ============================================================ #
+# Pages                                                         #
+# ============================================================ #
 
 def build_index():
     NAV = [("Index", "#collections"), ("About", "about.html"),
@@ -217,6 +275,7 @@ def build_index():
         slug, title, prefix, folder, *_ = c
         count = count_photos(folder, prefix)
         prio = ' fetchpriority="high"' if i == 1 else ''
+        # Use the first photo from each collection as the card image.
         jpg_path = DST / "images" / folder / f"{prefix}1-1600.jpg"
         w, h = img_dims(jpg_path)
         cards_html += f'''      <a href="collections/{slug}.html" class="collection-card">
@@ -377,6 +436,7 @@ def build_collection(idx, c):
     prev_c = COLLECTIONS[prev_idx]
     next_c = COLLECTIONS[next_idx]
 
+    # Build a flat list of frames — CSS columns handles the masonry.
     frames = []
     for i in indices:
         stem_url  = f"../images/{folder}/{prefix}{i}"
