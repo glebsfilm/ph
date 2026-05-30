@@ -151,7 +151,7 @@ def head(*, title, description, canonical, depth=0, extra_head=""):
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>{title}</title>
   <meta name="description" content="{description}">
-  <meta name="keywords" content="Photography, Film photography, 35mm film, 120mm film, analog art, vintage photography">
+  <meta name="keywords" content="Photography, Film photography, 35mm film, 120 film, analog art, vintage photography">
   <meta name="author" content="glebsfilm">
   <link rel="canonical" href="{canonical}">
 
@@ -213,7 +213,7 @@ def footer(*, depth=0):
     <div class="site-foot__grid">
       <div>
         <p class="site-foot__brand">glebsfilm</p>
-        <p class="site-foot__tag">A film photography portfolio. 35mm &amp; 120 film, SLR and TLR cameras.</p>
+        <p class="site-foot__tag">A film photography portfolio. 135 &amp; 120 film, SLR and TLR cameras.</p>
       </div>
       <div class="site-foot__col">
         <h4>Visit</h4>
@@ -234,8 +234,7 @@ def footer(*, depth=0):
       </div>
     </div>
     <div class="site-foot__base">
-      <p class="site-foot__copyright">© 2024 glebsfilm — All photographs by the author</p>
-      <p class="site-foot__set">Set in Fraunces &amp; IBM Plex Mono</p>
+      <p class="site-foot__copyright">© 2026 glebsfilm — All photographs by the author</p>
     </div>
   </div>
 </footer>"""
@@ -296,7 +295,7 @@ def build_index():
 
     page = f"""{head(
         title="glebsfilm — Analogue Photography",
-        description="A film photography portfolio. Landscapes, cityscapes, and automotive work on 35mm and 120 film, by glebsfilm.",
+        description="A film photography portfolio. Landscapes, cityscapes, and automotive work on 135 and 120 film, by glebsfilm.",
         canonical=f"{SITE_URL}/",
         depth=0,
         extra_head='<link rel="preload" as="image" href="assets/background-1920.webp" fetchpriority="high">',
@@ -372,7 +371,7 @@ def build_about():
 
     page = f"""{head(
         title="About — glebsfilm",
-        description="About glebsfilm — a film photographer working with 35mm and 120 film on SLR and TLR cameras.",
+        description="About glebsfilm — a film photographer working with 135 and 120 film on SLR and TLR cameras.",
         canonical=f"{SITE_URL}/about.html",
         depth=0,
     )}
@@ -402,8 +401,8 @@ def build_about():
           </div>
 
           <dl class="about__contact">
-            <dt>Cameras</dt><dd>SLR · TLR</dd>
-            <dt>Formats</dt><dd>35mm · 120</dd>
+            <dt>Cameras</dt><dd>MINOLTA X-700 · ZENIT E · YASHICA-B</dd>
+            <dt>Formats</dt><dd>135 · 120</dd>
             <dt>Output</dt><dd>{total} frames · {len(COLLECTIONS)} series</dd>
             <dt>Prints</dt><dd><a href="https://glebsfilm.darkroom.com" target="_blank" rel="noopener">glebsfilm.darkroom.com</a></dd>
           </dl>
