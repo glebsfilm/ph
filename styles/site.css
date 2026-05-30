@@ -941,3 +941,25 @@ body::before {
 
 /* When the lightbox is open, lock body scroll */
 body.lightbox-open { overflow: hidden; }
+
+/* ============================================================
+   iOS notch / status-bar shield
+   ------------------------------------------------------------
+   A small always-cream strip in the safe-area top zone, sitting
+   just below the navbar (z-index 99 vs nav's 100). iOS Safari
+   sometimes fails to paint position:fixed backgrounds into the
+   safe-area inset during scroll transitions — this guarantees
+   the top is never transparent regardless of the nav's state.
+   Height collapses to 0px on non-notched devices.
+   ============================================================ */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top, 0);
+  background: var(--paper);
+  z-index: 99;
+  pointer-events: none;
+}
