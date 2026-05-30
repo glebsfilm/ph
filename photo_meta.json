@@ -13,5 +13,7 @@
     "_example_landscape_3":  { "camera": "Mamiya RB67",     "film": "Kodak Ektar 100" },
     "_example_automotive_1": { "camera": "Canon AE-1",      "film": "Cinestill 800T" },
     "_example_cityscape_7":  { "camera": "Yashica Mat-124", "film": "Ilford HP5+" }
+
+    "automotive-1":  { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" }
   }
 }
