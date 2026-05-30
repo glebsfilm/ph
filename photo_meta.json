@@ -8,6 +8,43 @@
   },
 
   "photos": {
-    "automotive-1": { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" }
+    "automotive-1": { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" },
+    "automotive-2": { "camera": "Minolta X-700", "film": "Kodak ColorPlus 200 (135)" },
+    "automotive-3": { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" },
+    "automotive-4": { "camera": "Minolta X-700", "film": "Kodak ColorPlus 200 (135)" },
+    "automotive-5": { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" },
+    "automotive-6": { "camera": "Minolta X-700", "film": "Kodak ColorPlus 200 (135)" },
+    "automotive-7": { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" },
+    "automotive-8": { "camera": "Minolta X-700", "film": "Kodak ColorPlus 200 (135)" },
+    "automotive-9": { "camera": "Minolta X-700", "film": "Kodak ColorPlus 200 (135)" },
+    "automotive-10": { "camera": "Minolta X-700", "film": "LomoChrome Color '92 (135)" },
+    "automotive-11": { "camera": "Minolta 7000 Dynax", "film": "Kodak Gold 200 (135)" },
+    "automotive-12": { "camera": "Minolta X-700", "film": "LomoChrome Color '92 (135)" },
+    "automotive-13": { "camera": "Minolta X-700", "film": "LomoChrome Color '92 (135)" },
+    "automotive-14": { "camera": "Minolta X-700", "film": "LomoChrome Color '92 (135)" },
+    "automotive-15": { "camera": "Minolta X-700", "film": "LomoChrome Color '92 (135)" },
+    "automotive-16": { "camera": "Minolta X-700", "film": "Kodak Portra 400 (135)" },
+    "automotive-17": { "camera": "Minolta 7000 Dynax", "film": "Kodak Gold 200 (135)" },
+
+    "landscape-1": { "camera": "Yashica-B", "film": "Kodak Portra 400 (120)" },
+    "landscape-2": { "camera": "Olympus iS-200", "film": "Fujifilm 200 (135)" },
+    "landscape-3": { "camera": "Minolta X-700", "film": "Kodak Portra 800 (135)" },
+    "landscape-4": { "camera": "Olympus iS-200", "film": "Fujifilm 200 (135)" },
+    "landscape-5": { "camera": "Olympus OM20", "film": "Kodak Ultramax 400 (135)" },
+    "landscape-6": { "camera": "Yashica-B", "film": "Kodak Portra 400 (120)" },
+    "landscape-7": { "camera": "Minolta X-700", "film": "Fuji Eterna 250D (135)" },
+    "landscape-8": { "camera": "Zenit E", "film": "Kodak Gold 200 (135)" },
+    "landscape-9": { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" },
+    "landscape-10": { "camera": "Minolta X-700", "film": "Kodak Portra 800 (135)" },
+    "landscape-11": { "camera": "Olympus OM20", "film": "Kodak Portra 160 (135)" },
+    "landscape-12": { "camera": "Minolta X-700", "film": "Kodak Portra 800 (135)" },
+    "landscape-13": { "camera": "Olympus OM20", "film": "Kodak Ultramax 400 (135)" },
+    "landscape-14": { "camera": "Minolta X-700", "film": "Rollei IR (135)" },
+    "landscape-15": { "camera": "Minolta X-700", "film": "Kodak Portra 800 (135)" },
+    "landscape-16": { "camera": "Minolta X-700", "film": "Rollei IR (135)" },
+
+
+     "cityscape-1": { "camera": "Yashica-B", "film": "Kodak Portra 400 (120)" },
+    
   }
 }
