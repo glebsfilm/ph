@@ -44,7 +44,24 @@
     "landscape-16": { "camera": "Minolta X-700", "film": "Rollei IR (135)" },
 
 
-     "cityscape-1": { "camera": "Yashica-B", "film": "Kodak Portra 400 (120)" }
+     "cityscape-1": { "camera": "Olympus iS-200", "film": "Kodak Ultramax 400 (135)" },
+     "cityscape-2": { "camera": "Minolta X-700", "film": "Kodak Gold 200 (135)" },
+     "cityscape-3": { "camera": "Minolta X-700", "film": "Kodak ColorPlus 200 (135)" },
+     "cityscape-4": { "camera": "Minolta X-700", "film": "Kodak Portra 800 (135)" },
+     "cityscape-5": { "camera": "Olympus iS-200", "film": "Kodak Gold 200 (135)" },
+     "cityscape-6": { "camera": "Minolta X-700", "film": "Kodak Gold 200 (135)" },
+     "cityscape-7": { "camera": "Minolta X-700", "film": "Kodak Ektar 100 (135)" },
+     "cityscape-8": { "camera": "Minolta X-700", "film": "Lomography 100 (135)" },
+     "cityscape-9": { "camera": "Olympus iS-200", "film": "Kodak ColorPlus 200 (135)" },
+     "cityscape-10": { "camera": "Yashica-B", "film": "Kodak Portra 160 (135)" },
+     "cityscape-11": { "camera": "Minolta X-700", "film": "Kodak Ultramax 400 (135)" },
+     "cityscape-12": { "camera": "Zenit E", "film": "Kodak Ultramax 400 (135)" },
+     "cityscape-13": { "camera": "Minolta X-700", "film": "Kodak Gold 200 (135)" },
+     "cityscape-14": { "camera": "Minolta X-700", "film": "Kodak Portra 160 (135)" },
+     "cityscape-15": { "camera": "Olympus iS-200", "film": "Kodak Ultramax 400 (135)" },
+     "cityscape-16": { "camera": "Minolta X-700", "film": "Kodak Portra 800 (135)" },
+     "cityscape-17": { "camera": "Minolta X-700", "film": "Ilford XP2 400 (135)" }
+
     
   }
 }
